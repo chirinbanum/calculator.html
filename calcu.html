@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Calculator</title>
+    <style>
+        body {
+            background: url('https://png.pngtree.com/background/20210716/original/pngtree-calculator-childrens-day-toy-background-picture-image_1339705.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #000;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .calculator {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            width: 350px;
+            backdrop-filter: blur(5px);
+        }
+
+        .calculator #display {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: right;
+            width: calc(100% - 40px);
+            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 15px;
+        }
+
+        .buttons button {
+            background-color: #eee;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.5em;
+            padding: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .buttons button:hover {
+            background-color: #ccc;
+            transform: translateY(-2px);
+        }
+
+        .buttons button:active {
+            background-color: #bbb;
+            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .buttons .operator {
+            background-color: #0a74da;
+            background-color:;
+            color: #fff;
+        }
+
+        .buttons .operator:hover {
+            background-color: #004080;
+        }
+
+        .buttons .operator:active {
+            background-color: #0a74da;
+        }
+
+        .buttons .equal {
+            background-color: #0a74da;
+            color: #fff;
+            grid-column: span 2;
+        }
+
+        .buttons .equal:hover {
+            background-color: #0a74da;
+        }
+
+        .buttons .equal:active {
+            background-color: #0a74da;
+        }
+
+        .buttons .clear {
+            background-color: #0a74da;
+            color: #fff;
+        }
+
+        .buttons .clear:hover {
+            background-color: #0a74da;
+        }
+
+        .buttons .clear:active {
+            background-color: #004080;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button class="operator" onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="equal" onclick="calculate()">=</button>
+            <button class="operator" onclick="appendToDisplay('/')">/</button>
+        </div>
+    </div>
+    <script>
+        function appendToDisplay(value) {
+            const display = document.getElementById('display');
+            display.value += value;
+        }
+
+        function clearDisplay() {
+            const display = document.getElementById('display');
+            display.value = '';
+        }
+
+        function calculate() {
+            const display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch (e) {
+                display.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
